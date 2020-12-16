@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>プロスピA - 選手リスト - </title>
+  <link rel="stylesheet" href="../css/main-list.css">
+</head>
+<body>
+    <div id="app">
+        <div class="title-area">
+            <h1>プロスピA　選手リスト</h1>
+        </div>
+        <div class="search-condition-area">
+            <div class="team-area">
+                <label v-for="team in teams">
+                    <input type="radio"
+                      v-model="current"
+                      v-bind:value="team.value">{{ team.label }}
+                </label>
+            </div>
+            <div class="position-area">
+                <label v-for="position in positions">
+                    <input type="radio"
+                      v-model="current"
+                      v-bind:value="position.value">{{ position.label }}
+                </label>
+            </div>
+        </div>
+        <div class="list-area">
+            <table>
+                <thead v-pre>
+                  <tr>
+                    <th class="id unvisible">ID</th>
+                    <th class="position">投手 or 野手</th>
+                    <th class="player-name">選手名</th>
+                    <th class="position-detail">ポジション</th>
+                    <th class="meet">弾道</th>
+                    <th class="meet">ミート</th>
+                    <th class="power">パワー</th>
+                    <th class="run">走力</th>
+                    <th class="main-three-status">3ステ合計</th>
+                    <th class="catch">補給</th>
+                    <th class="throwing">スローイング</th>
+                    <th class="arm">肩力</th>
+                    <th class="main-six-status">6ステ合計</th>
+                    <th class="defense">メイン守備力</th>
+                    <th class="main-six-status">7ステ合計</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr
+                    v-for="player in players"
+                    v-bind:key="player.id">
+                    <th>{{ player.id }}</th>
+                    <td>{{ player.position }}</td>
+                    <td>{{ player.name }}</td>
+                    <td>{{ player.position-detail }}</td>
+                    <td>{{ player.meet }}</td>
+                    <td>{{ player.power }}</td>
+                    <td>{{ player.run }}</td>
+                    <td>{{ player.main-three-status }}</td>
+                  </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script src="../js/main-list.js"></script>
+</body>
+</html>
